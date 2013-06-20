@@ -1,9 +1,10 @@
-require 'arum/middleware'
+require "arum/middleware"
+require "arum/initializer"
 
 module Arum
   class Engine < Rails::Engine
     initializer "arum_engine.add_middleware" do |app|
-      app.middleware.insert_after ActionDispatch::Callbacks, Arum::Middleware
+      Arum::Initializer.init(app)
     end
   end
 end

@@ -1,20 +1,20 @@
 require 'spec_helper'
 
-describe 'Enable/disable Arum' do
+describe 'I18n wrapper' do
   describe '' do
     context 'when dispatch to a path on which Arum is not enabled' do
-      before { visit '/arum/default' }
+      before { visit '/i18n/default' }
 
       it {
-        expect(page).not_to have_content /arum/
+        expect(page).to have_content /Hello world/
       }
     end
 
     context 'when dispatch to a path on which Arum is enabled explicitely' do
-      before { visit '/arum/enabled' }
+      before { visit '/i18n/enabled' }
 
       it {
-        expect(page).to have_content /arum/
+        expect(page).to have_content /Hello world/
       }
     end
   end
