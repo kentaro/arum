@@ -1,1 +1,18 @@
-arum
+<div id="arum-panel">
+  <% if @translations.empty? %>
+    There's no sentence to be translated.
+  <% else %>
+    <% @translations.keys.each do |key| %>
+      <section>
+        <h1 class="arum-i18n-key"><%= key %></h1>
+        <% @translations[key].keys.each do |locale| %>
+          <section>
+            <div class="arum-i18n-translation">
+              <%= @translations[key][locale] %>
+            </div>
+          </section>
+        <% end %>
+      </section>
+    <% end %>
+  <% end %>
+</div>

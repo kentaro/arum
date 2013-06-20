@@ -41,7 +41,7 @@ module Arum
           @translations[key] ||= {}
           @translations[key][locale] =
             begin
-              I18n.config.backend.translate_without_arum(locale, key) || ''
+              I18n.backend.translate_without_arum(locale, key) || ''
             rescue
               ''
             end

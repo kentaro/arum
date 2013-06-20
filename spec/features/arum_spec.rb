@@ -6,7 +6,7 @@ describe 'Enable/disable Arum' do
       before { visit '/arum/default' }
 
       it {
-        expect(page).not_to have_content /arum/
+        expect(page).not_to have_css '#arum-panel'
       }
     end
 
@@ -14,7 +14,7 @@ describe 'Enable/disable Arum' do
       before { visit '/arum/enabled' }
 
       it {
-        expect(page).to have_content /arum/
+        expect(page).to have_css '#arum-panel'
       }
     end
   end

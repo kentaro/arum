@@ -13,24 +13,26 @@ module Arum
     def enable_arum
       Thread.current[:arum_enabled] = true
 
-      I18n.config.backend.extend(
-        Module.new {
-          orig_method = I18n.config.backend.method(:translate)
+      unless I18n.backend.respond_to?(:translate_without_arum)
+        I18n.backend.extend(
+          Module.new {
+            orig_method = I18n.backend.method(:translate)
 
-          define_method :translate_without_arum do |*args|
-            orig_method.call(*args)
-          end
-
-          def translate(locale, key, options = {})
-            if Thread.current[:arum_enabled]
-              Thread.current[:arum_i18n_keys] ||= []
-              Thread.current[:arum_i18n_keys].push(key)
+            define_method :translate_without_arum do |*args|
+              orig_method.call(*args)
             end
 
-            translate_without_arum(locale, key, options)
-          end
-        }
-      )
+            define_method :translate do |locale, key, options = {}|
+              if Thread.current[:arum_enabled]
+                Thread.current[:arum_i18n_keys] ||= []
+                Thread.current[:arum_i18n_keys].push(key)
+              end
+
+              orig_method.call(locale, key, options)
+            end
+          }
+        )
+      end
     end
 
     def arum_enabled?

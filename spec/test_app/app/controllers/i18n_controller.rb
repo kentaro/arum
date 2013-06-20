@@ -1,9 +1,9 @@
 class I18nController < ApplicationController
-  before_filter :enable_arum, only: [:enabled]
+  before_filter :enable_arum, only: [:no_translation, :has_translation]
 
-  def default
+  def no_translation
   end
 
-  def enabled
+  def has_translation
   end
 end
