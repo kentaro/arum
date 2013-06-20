@@ -23,7 +23,6 @@ module Arum
 
       if enabled?
         load_translations!
-        p @translations
         [@status, @headers, self]
       else
         [@status, @headers, @body]
@@ -43,7 +42,7 @@ module Arum
           @translations[key][locale] =
             begin
               I18n.config.backend.translate_without_arum(locale, key) || ''
-            rescue ArgumentError => e
+            rescue
               ''
             end
         end
