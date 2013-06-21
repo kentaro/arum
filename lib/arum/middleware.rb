@@ -6,7 +6,7 @@ module Arum
       @app     = app
       @options =  options
 
-      template_file = @options[:template] || File.expand_path(
+      template_file = Arum.template_file || File.expand_path(
         "../templates/arum.erb",
         __FILE__
       )
@@ -37,7 +37,7 @@ module Arum
       @translations = {}
 
       (Thread.current[:arum_i18n_keys] || []).each do |key|
-        [:ja, :en, :fr].each do |locale|
+        (Arum.available_locales || []).each do |locale|
           @translations[key] ||= {}
           @translations[key][locale] =
             begin

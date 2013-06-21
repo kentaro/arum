@@ -1,5 +1,8 @@
-require "arum/version"
+module Arum
+  mattr_accessor :template_file, :available_locales
 
-if defined? Rails
+  require "arum/version"
   require "arum/engine"
+  require "arum/middleware"
+  require "arum/initializer"
 end
