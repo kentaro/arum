@@ -1,16 +1,12 @@
 module Arum
   class TranslationsController < ApplicationController
-    before_filter :check_arum_enabed
-
     def edit
-    end
-
-    private
-
-    def check_arum_enabed
-      unless arum_enabled?
-        render json: {}, status: 403
-      end
+      I18n.backend.store_translations(
+        params[:translation][:locale], {
+          params[:translation][:key] => params[:translation][:translation]
+        }
+      )
+      render json: {}, status: 200
     end
   end
 end
