@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe 'I18n wrapper' do
-  describe '' do
+  describe 'GET *' do
     context 'when dispatch to a path on which Arum is not enabled' do
       before { visit '/i18n/no_translation' }
 

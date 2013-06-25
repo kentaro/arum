@@ -5,4 +5,6 @@ TestApp::Application.routes.draw do
 
   get '/i18n/no_translation'  => 'i18n#no_translation'
   get '/i18n/has_translation' => 'i18n#has_translation'
+
+  mount Arum::Engine => '/arum'
 end
