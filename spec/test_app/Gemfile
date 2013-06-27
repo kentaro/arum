@@ -44,4 +44,4 @@ end
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
-gem 'arum', path: File.expand_path('../', __FILE__)
+gem 'arum', path: '../../'
