@@ -9,6 +9,11 @@ module Arum
       ActiveSupport.on_load(:action_controller) do
         ActionController::Base.send(:include, Helper)
       end
+
+      app.config.assets.paths << File.expand_path(
+        "../../../app/assets/javascripts/arum",
+        __FILE__
+      )
     end
   end
 
