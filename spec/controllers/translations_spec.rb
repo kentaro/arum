@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Arum::TranslationsController do
   before {
     I18n.backend = Arum::I18nBackend.new
-    Arum.locale_base_dir = File.expand_path("../test_app/config/locales/arum", Rails.root)
+    Arum.locale_base_dir = File.expand_path("../test_app/config/arum", Rails.root)
   }
 
   describe 'PUT /arum/translations' do

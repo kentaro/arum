@@ -3,7 +3,7 @@ module Arum
     def self.init(app)
       app.middleware.insert_after ActionDispatch::Callbacks, Arum::Middleware
 
-      Arum.locale_base_dir ||= File.expand_path("../config/locales/arum", Rails.root)
+      Arum.locale_base_dir ||= File.expand_path("../config/arum", Rails.root)
       I18n.backend ||= Arum::I18nBackend.new
 
       ActiveSupport.on_load(:action_controller) do
