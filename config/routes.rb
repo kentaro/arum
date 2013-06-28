@@ -1,3 +1,3 @@
 Arum::Engine.routes.draw do
-  resources :transtations#, only: [:edit]
+  post '/translations' => 'arum/translations#create'
 end

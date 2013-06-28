@@ -7,9 +7,13 @@
         <h1 class="arum-i18n-key"><%= key %></h1>
         <% @translations[key].keys.each do |locale| %>
           <section>
-            <div class="arum-i18n-translation">
-              <%= locale %> <%= @translations[key][locale] %>
-            </div>
+            <h2><%= locale %></h2>
+            <form action="/arum/translations" method="post">
+              <input name="locale" type="hidden" value="<%= locale %>" />
+              <input name="key" type="hidden" value="<%= key %>" />
+              <textarea name="translation" rows="3" cols="10"><%= @translations[key][locale] %></textarea>
+              <input type="submit" />
+            </form>
           </section>
         <% end %>
       </section>

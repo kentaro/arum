@@ -1,9 +1,11 @@
 module Arum
   class TranslationsController < ApplicationController
-    def edit
+    skip_before_filter :verify_authenticity_token
+
+    def create
       I18n.backend.store_translations_to_file(
-        params[:translation][:locale], {
-          params[:translation][:key] => params[:translation][:translation]
+        params[:locale], {
+          params[:key] => params[:translation]
         }
       )
       render json: {}, status: 200

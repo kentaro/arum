@@ -1,4 +1,4 @@
-class ArumController < ApplicationController
+class ArumTestController < ApplicationController
   before_filter :enable_arum, only: [:enabled]
 
   def default

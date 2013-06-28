@@ -9,9 +9,7 @@ describe Arum::TranslationsController do
   describe 'PUT /arum/translations' do
     context 'when dispatch to a path on which Arum is not enabled' do
       before {
-        put :edit, use_route: :arum, translation: {
-          locale: 'en', key: 'foo.bar.baz', translation: 'test'
-        }
+        put :edit, use_route: :arum, locale: 'en', key: 'foo.bar.baz', translation: 'test'
       }
 
       it { expect(response.status).to be == 200 }
