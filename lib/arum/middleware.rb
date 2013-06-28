@@ -3,14 +3,12 @@ require "erb"
 module Arum
   class Middleware
     def initialize(app, options={})
-      @app     = app
-      @options =  options
-
-      template_file = Arum.template_file || File.expand_path(
+      @app      = app
+      @options  =  options
+      @template = Arum.template_file || File.expand_path(
         "../templates/arum.erb",
         __FILE__
       )
-      @template = ERB.new(File.read(template_file))
     end
 
     def call(env)
@@ -51,7 +49,8 @@ module Arum
 
     def each(&block)
       @body.each do |part|
-        part.gsub!(%r{</body>}, @template.result(binding) + "</body>")
+        erb = ERB.new(File.read(@template))
+        part.gsub!(%r{</body>}, erb.result(binding) + "</body>")
         block.call(part)
       end
     end

@@ -8,7 +8,7 @@
         <% @translations[key].keys.each do |locale| %>
           <section>
             <div class="arum-i18n-translation">
-              <%= @translations[key][locale] %>
+              <%= locale %> <%= @translations[key][locale] %>
             </div>
           </section>
         <% end %>
