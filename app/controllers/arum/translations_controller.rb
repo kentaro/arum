@@ -1,7 +1,7 @@
 module Arum
   class TranslationsController < ApplicationController
     def edit
-      I18n.backend.store_translations(
+      I18n.backend.store_translations_to_file(
         params[:translation][:locale], {
           params[:translation][:key] => params[:translation][:translation]
         }

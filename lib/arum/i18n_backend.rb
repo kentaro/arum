@@ -2,8 +2,8 @@ require 'yaml'
 
 module Arum
   class I18nBackend < I18n::Backend::Simple
-    def store_translations(locale, data, options = {})
-      super
+    def store_translations_to_file(locale, data, options = {})
+      store_translations(locale, data, options)
 
       FileUtils.mkdir_p(Arum.locale_base_dir)
       filename = File.expand_path("#{locale}.yml", Arum.locale_base_dir)

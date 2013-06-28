@@ -1,5 +1,6 @@
 TestApp::Application.routes.draw do
-  # To test whether or not `enable_arum` works correctly
+  root 'root#index'
+
   get '/arum/default' => 'arum#default'
   get '/arum/enabled' => 'arum#enabled'
 
